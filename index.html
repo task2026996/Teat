@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        .clock {margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: inline-block;
+        text-align: center;}
+    </style>
+</head>
+<body>
+    <h1>World Clock</h1>
+    <div class="clock" id="england">England: <span id="time-england"></span></div>
+    <div class="clock" id="germany">Germany: <span id="time-germany"></span></div>
+    <div class="clock" id="bulgaria">Bulgaria: <span id="time-bulgaria"></span></div>
+    <div class="clock" id="china">China: <span id="time-china"></span></div>
+    <div class="clock" id="japan">Japan: <span id="time-japan"></span></div>
+
+    <script>
+        function updateClock() {
+            const utc = new Date();
+            const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: '', hour12: false };
+            document.getElementById('time-england').textContent = utc.toLocaleString('en-GB', options);
+            options.timeZone = 'Europe/Berlin';
+            document.getElementById('time-germany').textContent = utc.toLocaleString('de-DE', options);
+            options.timeZone = 'Europe/Sofia';
+            document.getElementById('time-bulgaria').textContent = utc.toLocaleString('bg-BG', options);
+            options.timeZone = 'Asia/Shanghai';
+            document.getElementById('time-china').textContent = utc.toLocaleString('zh-CN', options);
+            options.timeZone = 'Asia/Tokyo';
+            document.getElementById('time-japan').textContent = utc.toLocaleString('ja-JP', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
